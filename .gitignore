@@ -1,0 +1,22 @@
+.env
+#hardhat files
+cache
+artifacts
+node_modules
+dist/
+build/
+.vscode
+.idea
+/types
+/typechain
+temp.txt
+
+deployed-contracts.json
+
+coverage
+coverage.json
+.coverage_artifacts
+.coverage_cache
+.coverage_contracts
+
+.DS_Store
