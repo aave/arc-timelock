@@ -101,6 +101,7 @@ makeSuite('ArcTimelock', setupTestEnvironment, (testEnv: TestEnv) => {
       expect(await arcTimelock.getMaximumDelay()).to.be.equal(ARC_TIMELOCK_CONFIG.MAXIMUM_DELAY);
       expect(await arcTimelock.getGuardian()).to.be.equal(ARC_TIMELOCK_CONFIG.GUARDIAN_ADDRESS);
       expect(await arcTimelock.getActionsSetCount()).to.be.equal(BigNumber.from(0));
+      await expect(arcTimelock.getCurrentState(BigNumber.from(0))).to.be.revertedWith('INVALID_ACTION_ID');
     });
 
     it('Release keys of the Market to ArcTimelock', async () => {
