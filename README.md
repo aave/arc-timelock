@@ -60,6 +60,7 @@ All tests will run a fork-based test with the existing deployed versions of aave
 
 - `test:arc:keys` - Run a simple test scenario for releasing the ARC market keys to the ArcTimelock.
 
+- `test:arc:new-permission-admin` - Test the addition of a new permission admin to the ARC protocol.
 
 ## Arc Timelock
 
@@ -72,7 +73,16 @@ All tests will run a fork-based test with the existing deployed versions of aave
 - `maximumDelay` - if the delay is updated by the guardian, it cannot be more than this maximum
 - `guardian` - the admin address of this contract with the permission to cancel ActionsSets and update the delay value
 
+## Adding a new PermissionAdmin
 
+Adding a new permission admin to the ARC protocol needs a governance proposal to be approved by the community and the `guardian`.
+
+The task `full:submit-proposal-new-permission-admin` lets you submit a proposal in this regard, providing the address of the new permission admin to add and the IPFS encoded hash of the AIP text.
+
+```
+ADMIN_ADDRESS="Your Address" IPFS_HASH="Your IPFS encoded hash" npm run main:proposal:submit-new-permission-admin
+```
 
 ## License
+
 [BSD-3-Clause](./LICENSE.md)
