@@ -7,21 +7,17 @@ const {
   AAVE_SHORT_EXECUTOR_ADDRESS,
   ARC_PERMISSION_MANAGER_ADDRESS,
   ARC_TIMELOCK_ADDRESS,
-  PROPOSAL_PAYLOAD_ADDRESS,
-  IPFS_ENCODED_HASH,
 } = process.env;
 
 task('full:submit-proposal-new-permission-admin', 'Submit Proposal')
-  .addParam('admin')
-  .addParam('ipfs')
+  .addParam('admin', 'Address of the new PermissionAdmin to add')
+  .addParam('ipfs', 'IPFS encoded hash')
   .setAction(async ({ admin, ipfs }, hre) => {
     if (
       !AAVE_GOVERNANCE_ADDRESS ||
       !AAVE_SHORT_EXECUTOR_ADDRESS ||
       !ARC_TIMELOCK_ADDRESS ||
-      !ARC_PERMISSION_MANAGER_ADDRESS ||
-      !PROPOSAL_PAYLOAD_ADDRESS ||
-      !IPFS_ENCODED_HASH
+      !ARC_PERMISSION_MANAGER_ADDRESS
     ) {
       throw new Error(
         'You have not set correctly the .config.env file, make sure to read the README.md'

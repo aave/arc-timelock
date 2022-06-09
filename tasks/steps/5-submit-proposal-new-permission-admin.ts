@@ -1,6 +1,6 @@
 import { task } from 'hardhat/config';
 import { Signer } from 'ethers';
-import { DRE, getImpersonatedSigner } from '../../helpers/misc-utils';
+import { DRE } from '../../helpers/misc-utils';
 import { getDefaultSigner } from '../../helpers/wallet-helpers';
 import { logTenderlySimulation } from '../../helpers/tenderly-utils';
 import { IAaveGovernanceV2__factory } from '../../typechain';

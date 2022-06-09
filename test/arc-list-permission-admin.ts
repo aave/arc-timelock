@@ -31,7 +31,6 @@ import {
   advanceBlockTo,
   increaseTime,
 } from '../helpers/misc-utils';
-import { parseEther } from 'ethers/lib/utils';
 import {
   AAVE_ADDRESS,
   GOVERNANCE_PROPOSAL_STATE,
@@ -309,7 +308,7 @@ const fullCycleLendingPool = async (
 
   // Transfer assets to proposer from reserve holder
   await waitForTx(await reserve.connect(holderSigner).transfer(user.address, transferAmount));
-  await waitForTx(await borrow.connect(wethSigner).transfer(user.address, parseEther('100')));
+  await waitForTx(await borrow.connect(wethSigner).transfer(user.address, utils.parseEther('100')));
 
   // Deposit to LendingPool
   await waitForTx(await reserve.connect(user).approve(pool.address, depositAmount));
