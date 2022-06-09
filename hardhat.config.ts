@@ -23,10 +23,12 @@ if (!SKIP_LOAD) {
   require('./tasks/migrations/full-deploy-timelock');
   require('./tasks/migrations/full-submit-proposal');
   require('./tasks/migrations/full-transfer-market-keys');
+  require('./tasks/migrations/full-submit-proposal-new-permission-admin');
   require('./tasks/steps/1-deploy-timelock');
   require('./tasks/steps/2-deploy-proposal-payload');
   require('./tasks/steps/3-transfer-market-keys');
   require('./tasks/steps/4-submit-proposal');
+  require('./tasks/steps/5-submit-proposal-new-permission-admin');
 }
 
 const DEFAULT_BLOCK_GAS_LIMIT = 12450000;
