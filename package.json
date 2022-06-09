@@ -28,7 +28,7 @@
     "kovan:proposal:deploy": "npm run compile && npm run hardhat:kovan -- full:deploy-proposal-payload --verify",
     "main:proposal:deploy": "npm run compile && npm run hardhat:main -- full:deploy-proposal-payload --verify",
     "main:proposal:submit": "npm run compile && npm run hardhat:main -- full:submit-proposal",
-    "main:proposal:submit-new-permission-admin": "npm run compile && npm run hardhat:main -- full:submit-proposal-new-permission-admin --admin ${ADMIN_ADDRESS} --ipfs ${IPFS_HASH}",
+    "main:proposal:submit-new-permission-admin": "npm run compile && npm run hardhat:main -- full:submit-proposal-new-permission-admin --admin ${ADMIN_ADDRESS} --ipfs ${IPFS_ENCODED_HASH}",
     "compile": "SKIP_LOAD=true hardhat compile",
     "console:fork": "MAINNET_FORK=true hardhat console",
     "coverage": "hardhat coverage",

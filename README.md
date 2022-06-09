@@ -80,7 +80,7 @@ Adding a new permission admin to the ARC protocol needs a governance proposal to
 The task `full:submit-proposal-new-permission-admin` lets you submit a proposal in this regard, providing the address of the new permission admin to add and the IPFS encoded hash of the AIP text.
 
 ```
-ADMIN_ADDRESS="Your Address" IPFS_HASH="Your IPFS encoded hash" npm run main:proposal:submit-new-permission-admin
+ADMIN_ADDRESS="Your Address" IPFS_ENCODED_HASH="Your IPFS encoded hash" npm run main:proposal:submit-new-permission-admin
 ```
 
 ## License
