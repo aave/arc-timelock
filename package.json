@@ -29,6 +29,7 @@
     "main:proposal:deploy": "npm run compile && npm run hardhat:main -- full:deploy-proposal-payload --verify",
     "main:proposal:submit": "npm run compile && npm run hardhat:main -- full:submit-proposal",
     "main:proposal:submit-new-permission-admin": "npm run compile && npm run hardhat:main -- full:submit-proposal-new-permission-admin --admin ${ADMIN_ADDRESS} --ipfs ${IPFS_ENCODED_HASH}",
+    "main:proposal:submit-new-permission-admin:check": "npm run compile && MAINNET_FORK=true CHECK=true FORK_BLOCK_NUMBER=${PROPOSAL_CREATION_BLOCK} ADMIN_ADDRESS=${ADMIN_ADDRESS} PROPOSAL_ID=${PROPOSAL_ID} npm run hardhat test test/arc-list-permission-admin",
     "compile": "SKIP_LOAD=true hardhat compile",
     "console:fork": "MAINNET_FORK=true hardhat console",
     "coverage": "hardhat coverage",

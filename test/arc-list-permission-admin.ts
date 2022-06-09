@@ -76,7 +76,27 @@ const PROPOSAL_DETAILS = {
   ARC_TIMELOCK_VETO_DAO_ADDRESS: process.env.ARC_TIMELOCK_GUARDIAN_ADDRESS,
 };
 
-const NEW_PERMISSION_ADMIN = '0x829BD824B016326A401d083B33D092293333A830';
+// Use the admin address passed via env to validate the proposal
+if (process.env.CHECK == 'true') {
+  console.log(
+    'Validating a live governance proposal for adding a new permission admin to ARC. Remember to specify correctly the following env variables:'
+  );
+  console.log(
+    '- PROPOSAL_CREATION_BLOCK - the block number when you the proposal submission -->',
+    process.env.PROPOSAL_CREATION_BLOCK
+  );
+  console.log(
+    '- ADMIN_ADDRESS - the address of the new permission admin -->',
+    process.env.ADMIN_ADDRESS
+  );
+  console.log('- PROPOSAL_ID - the id of the governance proposal -->', process.env.PROPOSAL_ID);
+  if (!process.env.ADMIN_ADDRESS || !process.env.PROPOSAL_ID) {
+    throw new Error('Please, check your env variables for the governance proposal validation.');
+  }
+}
+
+const NEW_PERMISSION_ADMIN =
+  process.env.ADMIN_ADDRESS || '0xC5eeEd1a811b77d64A37d94CF0363bA716375FDd';
 
 // /////////////////
 
@@ -155,15 +175,19 @@ describe('ARC: New PermissionAdmin', () => {
   });
 
   it('Submit Proposal', async () => {
-    const proposalId = await hre.run('submit-proposal-new-permission-admin', {
-      defender: false,
-      aaveGovernance: AAVE_GOVERNANCE_ADDRESS,
-      permissionManager: PROPOSAL_DETAILS.ARC_PERMISSION_MANAGER_ADDRESS,
-      executor: AAVE_SHORT_EXECUTOR_ADDRESS,
-      timelock: arcTimelock.address,
-      newPermissionAdmin: NEW_PERMISSION_ADMIN,
-      ipfsEncoded: '0xf7a1f565fcd7684fba6fea5d77c5e699653e21cb6ae25fbf8c5dbc8d694c7949',
-    });
+    let proposalId = process.env.PROPOSAL_ID;
+
+    if (!proposalId) {
+      proposalId = await hre.run('submit-proposal-new-permission-admin', {
+        defender: false,
+        aaveGovernance: AAVE_GOVERNANCE_ADDRESS,
+        permissionManager: PROPOSAL_DETAILS.ARC_PERMISSION_MANAGER_ADDRESS,
+        executor: AAVE_SHORT_EXECUTOR_ADDRESS,
+        timelock: arcTimelock.address,
+        newPermissionAdmin: NEW_PERMISSION_ADMIN,
+        ipfsEncoded: '0xf7a1f565fcd7684fba6fea5d77c5e699653e21cb6ae25fbf8c5dbc8d694c7949',
+      });
+    }
 
     proposal = await governance.getProposalById(proposalId);
 
