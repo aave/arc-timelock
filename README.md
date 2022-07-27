@@ -32,6 +32,10 @@ Follow the next steps to setup the repository:
 - Create an environment file named `.env` and fill out the environment variables per `example.env`
 - Make sure the information included in the environment file `.config.env` is correct.
 
+#### Note:
+If using private key instead of mnemonic, please use the full 64 character hex string, without the "0x" prefix in the `.env` file. Additionally, please update the `accounts` variable on line 52 of `hardhat.config.ts` to be `accounts: [process.env.PRIVATE_KEY],`.
+
+
 ### Running in Docker
 
 Terminal Window 1
