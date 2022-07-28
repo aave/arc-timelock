@@ -36,7 +36,7 @@ const DEFAULT_GAS_MUL = 5;
 const HARDFORK = 'istanbul';
 const MNEMONIC_PATH = "m/44'/60'/0'/0";
 const MNEMONIC = process.env.MNEMONIC || '';
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const PRIVATE_KEY = process.env.PRIVATE_KEY || '';
 const FORK_BLOCK_NUMBER = process.env.FORK_BLOCK_NUMBER;
 const MAINNET_FORK = process.env.MAINNET_FORK === 'true';
 const ETHERSCAN_KEY = process.env.ETHERSCAN_KEY || '';
